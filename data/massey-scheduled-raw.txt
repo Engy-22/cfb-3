@@ -1,0 +1,22 @@
+2017-12-27  Southern Miss             0  Florida St                0 SchP     Independence Bowl Shreveport LA
+2017-12-27  Iowa                      0  Boston College            0 SchP     Pinstripe Bowl Bronx NY
+2017-12-27  Arizona                   0  Purdue                    0 SchP     Foster Farms Bowl Santa Clara CA
+2017-12-27  Texas                     0  Missouri                  0 SchP     Texas Bowl Houston TX
+2017-12-28  Virginia                  0  Navy                      0 SchP     Military Bowl Annapolis MD
+2017-12-28  Virginia Tech             0  Oklahoma St               0 SchP     Camping World Bowl Orlando FL
+2017-12-28  Stanford                  0  TCU                       0 SchP     Alamo Bowl San Antonio TX
+2017-12-28  Washington St             0  Michigan St               0 SchP     Holiday Bowl San Diego CA
+2017-12-29  Wake Forest               0  Texas A&M                 0 SchP     Belk Bowl Charlotte NC
+2017-12-29  NC State                  0  Arizona St                0 SchP     Sun Bowl El Paso TX
+2017-12-29  Kentucky                  0  Northwestern              0 SchP     Music City Bowl Nashville TN
+2017-12-29  Utah St                   0  New Mexico St             0 SchP     Arizona Bowl Tucson AZ
+2017-12-29  USC                       0  Ohio St                   0 SchP     Cotton Bowl Arlington TX
+2017-12-30  Louisville                0  Mississippi St            0 SchP     Taxslayer Bowl Jacksonville FL
+2017-12-30  Iowa St                   0  Memphis                   0 SchP     Liberty Bowl Memphis TN
+2017-12-30  Washington                0  Penn St                   0 SchP     Fiesta Bowl Glendale AZ
+2017-12-30  Wisconsin                 0 @Miami FL                  0 SchP     Orange Bowl Miami Gardens FL
+2018-01-01  Michigan                  0  South Carolina            0 SchP     Outback Bowl Tampa FL
+2018-01-01  UCF                       0  Auburn                    0 SchP     Peach Bowl Atlanta GA
+2018-01-01  Notre Dame                0  LSU                       0 SchP     Citrus Bowl Orlando FL
+2018-01-01  Georgia                   0  Oklahoma                  0 SchP     Rose Bowl Pasadena CA
+2018-01-01  Alabama                   0  Clemson                   0 SchP     Sugar Bowl New Orleans LA
