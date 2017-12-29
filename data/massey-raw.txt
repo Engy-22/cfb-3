@@ -849,3 +849,11 @@
 2017-12-26  Utah                     30  West Virginia            14 P        Heart of Dallas Bowl Dallas TX
 2017-12-26  Duke                     36  N Illinois               14 P        Quick Lane Bowl Detroit MI
 2017-12-26  Kansas St                35  UCLA                     17 P        Cactus Bowl Phoenix AZ
+2017-12-27  Florida St               42  Southern Miss            13 P        Independence Bowl Shreveport LA
+2017-12-27  Iowa                     27  Boston College           20 P        Pinstripe Bowl Bronx NY
+2017-12-27  Purdue                   38  Arizona                  35 P        Foster Farms Bowl Santa Clara CA
+2017-12-27  Texas                    33  Missouri                 16 P        Texas Bowl Houston TX
+2017-12-28  Virginia                  7  Navy                     49 P        Military Bowl Annapolis MD
+2017-12-28  Virginia Tech            21  Oklahoma St              30 P        Camping World Bowl Orlando FL
+2017-12-28  Stanford                 37  TCU                      39 P        Alamo Bowl San Antonio TX
+2017-12-28  Washington St            17  Michigan St              42 P        Holiday Bowl San Diego CA

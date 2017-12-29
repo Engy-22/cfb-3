@@ -1,11 +1,3 @@
-2017-12-27  Southern Miss             0  Florida St                0 SchP     Independence Bowl Shreveport LA
-2017-12-27  Iowa                      0  Boston College            0 SchP     Pinstripe Bowl Bronx NY
-2017-12-27  Arizona                   0  Purdue                    0 SchP     Foster Farms Bowl Santa Clara CA
-2017-12-27  Texas                     0  Missouri                  0 SchP     Texas Bowl Houston TX
-2017-12-28  Virginia                  0  Navy                      0 SchP     Military Bowl Annapolis MD
-2017-12-28  Virginia Tech             0  Oklahoma St               0 SchP     Camping World Bowl Orlando FL
-2017-12-28  Stanford                  0  TCU                       0 SchP     Alamo Bowl San Antonio TX
-2017-12-28  Washington St             0  Michigan St               0 SchP     Holiday Bowl San Diego CA
 2017-12-29  Wake Forest               0  Texas A&M                 0 SchP     Belk Bowl Charlotte NC
 2017-12-29  NC State                  0  Arizona St                0 SchP     Sun Bowl El Paso TX
 2017-12-29  Kentucky                  0  Northwestern              0 SchP     Music City Bowl Nashville TN
