@@ -5,6 +5,7 @@ setwd(here::here())
 # load packages
 library(tidyverse)
 library(magrittr)
+library(randomForest)
 
 # read data
 raw_df <- read_tsv("data/massey-scheduled-raw.txt", col_names = FALSE) %>%
@@ -37,22 +38,33 @@ df2 <- raw_df %>%
 
 # load the rankings data
 rankings_df <- read_csv("data/ratings.csv") %>%
-  select(team = Team,
-         mean = Mean) %>%
+  #select(team = Team, mean = Mean) %>%
   glimpse()
 
 # combine the team 1 offense and team 2 offense data
-off_def_sched_df <- bind_rows(df1, df2) %>%
-  left_join(rankings_df, by = c("offense" = "team")) %>%
-  rename("offense_mean" = mean) %>%
-  left_join(rankings_df, by = c("defense" = "team")) %>%
-  rename("defense_mean" = mean) %>%
+off_def_df <- bind_rows(df1, df2) %>%
+  # left_join(rankings_df, by = c("offense" = "team")) %>%
+  # rename("offense_mean" = mean) %>%
+  # left_join(rankings_df, by = c("defense" = "team")) %>%
+  # rename("defense_mean" = mean) %>%
   na.omit() %>%  # drop teams without rankings
   glimpse() %>%
-  write_csv("data/off-def-sched.csv")
+  write_csv("data/off-def.csv")
 
-playoff_df <- off_def_sched_df %>%
-  filter(offense %in% c("Georgia", "Alabama", "Oklahoma", "Clemson")) %>%
-  complete(offense, defense) %>%
+# load the rankings data
+rating_components_df <- read_csv("data/ratings.csv") %>%
+  select(team = Team, ABC:YCM) %>%
   glimpse()
 
+rf_df <- off_def_df %>%
+  left_join(rating_components_df, by = c("offense" = "team")) %>%
+  rename_at(.vars = vars(ABC:YCM), funs(paste0(., "_offense"))) %>%
+  left_join(rating_components_df, by = c("defense" = "team")) %>%
+  rename_at(.vars = vars(ABC:YCM), funs(paste0(., "_defense"))) %>%
+  glimpse()
+
+fit_df <- rf_df %>%
+  mutate(rf_pred = as.numeric(predict(rf, newdata = rf_df))) %>%
+  select(game_id, points, offense, defense, rf_pred) %>%
+  glimpse() %>%
+  write_csv("data/pred.csv")
