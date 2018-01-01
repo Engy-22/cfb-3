@@ -6,14 +6,14 @@ library(lme4)
 library(rstanarm); options(mc.cores = parallel::detectCores() - 1)
 
 # load data
-off_def_df <- read_csv("data/fit.csv")
+points_rf_df <- read_csv("data/points-rf.csv")
 
 # fit model
-fit <- stan_lmer(sqrt(points) ~ rf_pred + (1 | offense) + (1 | defense), 
-                data = off_def_df, iter = 10000, chains = 3)
+fit <- stan_lmer(sqrt(points) ~ sqrt(rf_pred) + mean_rank_diff + (1 | offense) + (1 | defense), 
+                data = points_rf_df, iter = 10000, chains = 3)
 
 # posterior predictions (points)
-pred_df <- read_csv("data/pred.csv")
+pred_df <- read_csv("data/points-rf-pred.csv")
 pp <- posterior_predict(fit, newdata = pred_df)
 
 # convert posterior points to posterior wins

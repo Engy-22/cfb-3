@@ -5,7 +5,6 @@ setwd(here::here())
 # load packages
 library(tidyverse)
 library(magrittr)
-library(randomForest)
 
 # read data
 raw_df <- read_tsv("data/massey-scheduled-raw.txt", col_names = FALSE) %>%
@@ -29,42 +28,40 @@ df1 <- raw_df %>%
          defense = team2_name) %>%
   glimpse()
 
-# make team 2 the offence
+# make team 2 the offense
 df2 <- raw_df %>%
   select(game_id,
          points = team2_points,
          offense = team2_name, 
          defense = team1_name)
 
-# load the rankings data
-rankings_df <- read_csv("data/ratings.csv") %>%
-  #select(team = Team, mean = Mean) %>%
+# combine the team 1 offense and team 2 offense data
+ranks_df <- read_csv("data/ratings.csv") %>%
+  select(team = Team, 
+         mean = Mean, 
+         median = Median, 
+         trimmed = Trimmed) %>%
   glimpse()
 
-# combine the team 1 offense and team 2 offense data
-off_def_df <- bind_rows(df1, df2) %>%
-  # left_join(rankings_df, by = c("offense" = "team")) %>%
-  # rename("offense_mean" = mean) %>%
-  # left_join(rankings_df, by = c("defense" = "team")) %>%
-  # rename("defense_mean" = mean) %>%
+points_df <- bind_rows(df1, df2) %>%
+  left_join(ranks_df, by = c("offense" = "team")) %>%
+  rename("offense_mean_rank" = mean,
+         "offense_median_rank" = median,
+         "offense_trimmed_rank" = trimmed) %>%
+  left_join(ranks_df, by = c("defense" = "team")) %>%
+  rename("defense_mean_rank" = mean,
+         "defense_median_rank" = median,
+         "defense_trimmed_rank" = trimmed) %>%
+  mutate(mean_rank_diff = offense_mean_rank - defense_mean_rank,
+         median_rank_diff = offense_median_rank - defense_median_rank,
+         trimmed_rank_diff = offense_trimmed_rank - defense_trimmed_rank) %>%
   na.omit() %>%  # drop teams without rankings
   glimpse() %>%
-  write_csv("data/off-def.csv")
+  write_csv("data/points.csv")
 
-# load the rankings data
-rating_components_df <- read_csv("data/ratings.csv") %>%
-  select(team = Team, ABC:YCM) %>%
-  glimpse()
-
-rf_df <- off_def_df %>%
-  left_join(rating_components_df, by = c("offense" = "team")) %>%
-  rename_at(.vars = vars(ABC:YCM), funs(paste0(., "_offense"))) %>%
-  left_join(rating_components_df, by = c("defense" = "team")) %>%
-  rename_at(.vars = vars(ABC:YCM), funs(paste0(., "_defense"))) %>%
-  glimpse()
-
-fit_df <- rf_df %>%
-  mutate(rf_pred = as.numeric(predict(rf, newdata = rf_df))) %>%
-  select(game_id, points, offense, defense, rf_pred) %>%
+# add random forest predictions
+rf_pred <- predict(rf_fit, newdata = points_df)
+points_pred_df <- points_df %>%
+  mutate(rf_pred = rf_pred) %>%
   glimpse() %>%
-  write_csv("data/pred.csv")
+  write_csv("data/points-rf-pred.csv")
